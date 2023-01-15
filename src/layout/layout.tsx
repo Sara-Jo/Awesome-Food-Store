@@ -51,7 +51,7 @@ const Header = styled.header`
   font-weight: bold;
 `;
 
-const Body = styled.body`
+const Body = styled.div`
   height: 100%;
 `;
 
