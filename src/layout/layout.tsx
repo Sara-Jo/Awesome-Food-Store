@@ -70,11 +70,11 @@ const ButtonContainer = styled.div`
 const ButtonWrapper = styled.div`
   margin: 0 1rem;
   color: white;
+  font-size: 1.1rem;
 `;
 
 const Footer = styled.footer`
   background-color: #cc96f7;
-  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,4 +82,5 @@ const Footer = styled.footer`
   color: white;
   font-weight: bold;
   margin-top: 2rem;
+  padding: 0.5rem 0;
 `;

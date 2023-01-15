@@ -1,13 +1,13 @@
 import { createGlobalStyle } from "styled-components";
-import { Inter, Rowdies } from "@next/font/google";
+import { Noto_Sans_KR, Rowdies } from "@next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const noto_sans_KR = Noto_Sans_KR({ weight: "400", preload: false });
 const rowdies = Rowdies({ weight: "700", subsets: ["latin"] });
 
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    font-family: ${inter.style.fontFamily};
+    font-family: ${noto_sans_KR.style.fontFamily};
   }
   h1, h2, h3 {
     font-family: ${rowdies.style.fontFamily};

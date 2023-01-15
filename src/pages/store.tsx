@@ -44,8 +44,8 @@ export default function Store() {
               // layout="fill"
               objectFit="cover"
               alt={store.name}
-              width={250}
-              height={250}
+              width={200}
+              height={200}
             />
           </StoreWrapper>
         ))}
@@ -58,21 +58,25 @@ Store.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-const Container = styled.div`
-  padding: 0 2rem;
-`;
+const Container = styled.div``;
 
 const TitleContainer = styled.div`
   color: purple;
+  padding: 1rem 3rem;
 `;
 
 const StoreContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 0 3rem;
+  grid-gap: 1rem;
 `;
 
 const StoreWrapper = styled.div`
-  margin: 1rem 0;
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   img {
     border-radius: 1rem;
     cursor: pointer;

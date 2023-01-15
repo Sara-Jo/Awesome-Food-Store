@@ -52,14 +52,14 @@ const ButtonWrapper = styled.div`
   background-color: white;
   color: purple;
   padding: 0.8rem 1.5rem;
-  border: 2px solid purple;
+  border: 3px solid purple;
   margin: 0 1.5rem;
   border-radius: 0.5rem;
   font-weight: bold;
   cursor: pointer;
   &:hover {
     background-color: purple;
-    border: 2px solid white;
+    border: 3px solid white;
     color: white;
   }
 `;

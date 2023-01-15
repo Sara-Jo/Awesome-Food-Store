@@ -24,10 +24,12 @@ export default function Modal({ store, toggleModal }: Props) {
           <CancelButtonWrapper>
             <CancelIcon onClick={() => toggleModal()} />
           </CancelButtonWrapper>
-          <TitleWrapper>
-            <h1>{store.name}</h1>
-          </TitleWrapper>
-          <DescriptionWrapper>{store.description}</DescriptionWrapper>
+          <ContentWrapper>
+            <TitleWrapper>
+              <h1>{store.name}</h1>
+            </TitleWrapper>
+            <DescriptionWrapper>{store.description}</DescriptionWrapper>
+          </ContentWrapper>
         </InfoWrapper>
       </Container>
     </Background>
@@ -36,7 +38,6 @@ export default function Modal({ store, toggleModal }: Props) {
 
 const Background = styled.div`
   width: 100%;
-  height: 100%;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -61,6 +62,10 @@ const InfoWrapper = styled.div`
   padding: 2rem;
 `;
 
+const ContentWrapper = styled.div`
+  padding: 0 2rem;
+`;
+
 const TitleWrapper = styled.div`
   color: purple;
 `;
@@ -68,6 +73,7 @@ const TitleWrapper = styled.div`
 const DescriptionWrapper = styled.div`
   margin-top: 2rem;
   line-height: 1.7;
+  font-size: 0.9rem;
 `;
 
 const CancelButtonWrapper = styled.div`
