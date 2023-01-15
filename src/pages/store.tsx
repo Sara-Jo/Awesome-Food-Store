@@ -8,7 +8,7 @@ import Modal from "@/components/Modal";
 
 export default function Store() {
   const [stores, setStores] = useState<IStore[]>([]);
-  const [selectedStore, setSelectedStore] = useState<IStore>(stores[0]);
+  const [selectedStoreId, setSelectedStoreId] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const getStores = async () => {
@@ -20,8 +20,8 @@ export default function Store() {
     getStores();
   }, []);
 
-  const handleStoreClick = (store: IStore) => {
-    setSelectedStore(store);
+  const handleStoreClick = (storeId: number) => {
+    setSelectedStoreId(storeId);
     setIsModalOpen(true);
   };
 
@@ -32,16 +32,18 @@ export default function Store() {
       </TitleContainer>
       {isModalOpen && (
         <Modal
-          store={selectedStore}
+          storeId={selectedStoreId}
           toggleModal={() => setIsModalOpen(false)}
         />
       )}
       <StoreContainer>
         {stores.map((store) => (
-          <StoreWrapper key={store.id} onClick={() => handleStoreClick(store)}>
+          <StoreWrapper
+            key={store.id}
+            onClick={() => handleStoreClick(store.id)}
+          >
             <Image
               src={store.thumb}
-              // layout="fill"
               objectFit="cover"
               alt={store.name}
               width={200}

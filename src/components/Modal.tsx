@@ -1,34 +1,49 @@
-import IStore from "@/interface/store";
 import Image from "next/image";
 import styled from "styled-components";
 import CancelIcon from "@material-ui/icons/Cancel";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import IStore from "@/interface/store";
 
 interface Props {
-  store: IStore;
+  storeId: number;
   toggleModal: () => void;
 }
 
-export default function Modal({ store, toggleModal }: Props) {
+export default function Modal({ storeId, toggleModal }: Props) {
+  const [store, setStore] = useState<IStore | null>(null);
+
+  const getStoreById = async () => {
+    const { data } = await axios.get(`http://localhost:9000/stores/${storeId}`);
+    setStore(data);
+  };
+
+  useEffect(() => {
+    getStoreById();
+  }, []);
+
   return (
     <Background>
       <Container>
         <ImageWrapper>
-          <Image
-            src={store?.image}
-            alt={store?.name}
-            height="480"
-            width="480"
-          />
+          {store && (
+            <Image
+              src={store?.image}
+              alt={store?.name}
+              height="480"
+              width="480"
+            />
+          )}
         </ImageWrapper>
         <InfoWrapper>
           <CancelButtonWrapper>
             <CancelIcon onClick={() => toggleModal()} />
           </CancelButtonWrapper>
           <ContentWrapper>
-            <TitleWrapper>
-              <h1>{store.name}</h1>
-            </TitleWrapper>
-            <DescriptionWrapper>{store.description}</DescriptionWrapper>
+            <TitleWrapper>{store && <h1>{store.name}</h1>}</TitleWrapper>
+            <DescriptionWrapper>
+              {store && <p>{store.description}</p>}
+            </DescriptionWrapper>
           </ContentWrapper>
         </InfoWrapper>
       </Container>
