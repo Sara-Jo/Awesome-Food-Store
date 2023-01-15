@@ -83,4 +83,7 @@ const StoreWrapper = styled.div`
     border-radius: 1rem;
     cursor: pointer;
   }
+  &:hover {
+    opacity: 0.6;
+  }
 `;

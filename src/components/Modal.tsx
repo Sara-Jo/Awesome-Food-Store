@@ -4,6 +4,7 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import IStore from "@/interface/store";
+import Portal from "./Portal";
 
 interface Props {
   storeId: number;
@@ -23,39 +24,45 @@ export default function Modal({ storeId, toggleModal }: Props) {
   }, []);
 
   return (
-    <Background>
-      <Container>
-        <ImageWrapper>
-          {store && (
-            <Image
-              src={store?.image}
-              alt={store?.name}
-              height="480"
-              width="480"
-            />
-          )}
-        </ImageWrapper>
-        <InfoWrapper>
-          <CancelButtonWrapper>
-            <CancelIcon onClick={() => toggleModal()} />
-          </CancelButtonWrapper>
-          <ContentWrapper>
-            <TitleWrapper>{store && <h1>{store.name}</h1>}</TitleWrapper>
-            <DescriptionWrapper>
-              {store && <p>{store.description}</p>}
-            </DescriptionWrapper>
-          </ContentWrapper>
-        </InfoWrapper>
-      </Container>
-    </Background>
+    <Portal>
+      <Background>
+        <Container>
+          <ImageWrapper>
+            {store && (
+              <Image
+                src={store?.image}
+                alt={store?.name}
+                height="480"
+                width="480"
+              />
+            )}
+          </ImageWrapper>
+          <InfoWrapper>
+            <CancelButtonWrapper>
+              <CancelIcon onClick={() => toggleModal()} />
+            </CancelButtonWrapper>
+            <ContentWrapper>
+              <TitleWrapper>{store && <h1>{store.name}</h1>}</TitleWrapper>
+              <DescriptionWrapper>
+                {store && <p>{store.description}</p>}
+              </DescriptionWrapper>
+            </ContentWrapper>
+          </InfoWrapper>
+        </Container>
+      </Background>
+    </Portal>
   );
 }
 
 const Background = styled.div`
   width: 100%;
-  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 const Container = styled.div`
