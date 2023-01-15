@@ -1,10 +1,12 @@
 import Image from "next/image";
 import styled from "styled-components";
 import CancelIcon from "@material-ui/icons/Cancel";
+import HomeIcon from "@material-ui/icons/Home";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import IStore from "@/interface/store";
 import Portal from "./Portal";
+import Link from "next/link";
 
 interface Props {
   storeId: number;
@@ -42,7 +44,16 @@ export default function Modal({ storeId, toggleModal }: Props) {
               <CancelIcon onClick={() => toggleModal()} />
             </CancelButtonWrapper>
             <ContentWrapper>
-              <TitleWrapper>{store && <h1>{store.name}</h1>}</TitleWrapper>
+              <TitleWrapper>
+                {store && <h1>{store.name}</h1>}
+                {store?.url && (
+                  <Link href={store.url}>
+                    <HomeButtonWrapper>
+                      <HomeIcon />
+                    </HomeButtonWrapper>
+                  </Link>
+                )}
+              </TitleWrapper>
               <DescriptionWrapper>
                 {store && <p>{store.description}</p>}
               </DescriptionWrapper>
@@ -89,7 +100,12 @@ const ContentWrapper = styled.div`
 `;
 
 const TitleWrapper = styled.div`
-  color: purple;
+  display: flex;
+  align-items: center;
+  h1 {
+    color: purple;
+    margin-right: 1.5rem;
+  }
 `;
 
 const DescriptionWrapper = styled.div`
@@ -103,5 +119,18 @@ const CancelButtonWrapper = styled.div`
   justify-content: flex-end;
   svg {
     cursor: pointer;
+  }
+`;
+
+const HomeButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: purple;
+  border-radius: 5rem;
+  svg {
+    color: white;
+    padding: 0.2rem;
+    font-size: 1.3rem;
   }
 `;
