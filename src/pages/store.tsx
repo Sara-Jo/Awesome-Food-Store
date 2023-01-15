@@ -71,11 +71,11 @@ const StoreContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   padding: 0 3rem;
-  grid-gap: 1rem;
+  column-gap: 2rem;
+  row-gap: 2rem;
 `;
 
 const StoreWrapper = styled.div`
-  margin: 2rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
