@@ -1,7 +1,7 @@
 import IStore from "@/interface/store";
 import { ReactElement, useEffect, useState } from "react";
 import axios from "axios";
-import Layout from "@/layout/layout";
+import Layout from "@/components/layout/layout";
 import styled from "styled-components";
 import Image from "next/image";
 import Modal from "@/components/Modal";
